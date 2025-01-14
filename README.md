@@ -1,7 +1,10 @@
 # topas2mqtt
 
-Anslutar till Topas reningsverk, samlar in data och postart det sedan till en MQTT-server. En del data översätts och postas i klartext. Det är fortfarande register som är oklart vad de gör.
+Syftet med det här projektet är att samla in mätvärden från Topas reningsverk och posta till en MQTT-server.
 
+En Arduino (ESP8266) används för att ansluta till Topas egna wifi, där ett gäng register läses från kontrollern. Därefter ansluter Arduino till ett riktigt wifi och postar data till en MQTT-server. En del register översätts när de postas. Det finns fortfarande register som är okänt hur de fungerar.
+
+```
 # Register:
 
 Register 1 verksnummer
@@ -115,3 +118,4 @@ Register 11051 - Mode
         1: Automatic
         2: Manual
         3: Service
+```
