@@ -38,18 +38,15 @@ const char* wifi_ssids[][2] = {
     {"Hus", "supermega"},
     {"ost-ng", "magnusmagnus"}};
 
-//const char* topas_ssid = "topas";
-//const char* topas_pwd = "tom123456";
-const char* topas_ssid = "ost-ng";
-const char* topas_pwd = "magnusmagnus";
+const char* topas_ssid = "topas";
+const char* topas_pwd = "tom123456";
 
-//const char* topas_url = "http://www.topol.tom/status_read";
-const char* topas_url = "http://homeassistant.appelquist.org:8080/status_read";
+const char* topas_url = "http://www.topol.tom/status_read";
 
-const char* mqtt_server = "mqtt.appelquist.org";
+const char* mqtt_server = "<MQTT SERVER>";
 const uint16_t mqtt_server_port = 1883; 
-const char* mqtt_username = "topas";
-const char* mqtt_password = "hejatopas";
+const char* mqtt_username = "<MQTT USERNAME>";
+const char* mqtt_password = "<MQTT PASSWORD>";
 
 void setup() {
   pinMode(LED, OUTPUT);
