@@ -2,10 +2,27 @@
 
 Syftet med det här projektet är att samla in mätvärden från Topas reningsverk och posta till en MQTT-server.
 
-En Arduino (ESP8266) används för att ansluta till Topas egna wifi, där ett gäng register läses från kontrollern. Därefter ansluter Arduino till ett riktigt wifi och postar data till en MQTT-server. En del register översätts när de postas. Det finns fortfarande register som är okänt hur de fungerar.
+En Arduino (ESP32) används för att ansluta till Topas egna wifi, där ett gäng register läses från kontrollern. Därefter ansluter Arduino till ett riktigt wifi och postar data till en MQTT-server. En del register översätts när de postas. Det finns fortfarande register som är okänt hur de fungerar.
+
+## Hårdvara
+Jag kör det här på en ESP32 Wroom board. Just det här kortet har en RGB-led, en röd led och en knapp. Det går bra att köra på vilket kort som helst, bara det finns wifi och är en ESP32.
+
+Knapp: pin 0
+Röd led: pin 2
+RGB-led driver: pin 16
+
+## Funktioner
+För att konfigurera wifi, mqtt-server och lite annat, håll in knappen vid uppstart. Då startas det upp ett nytt nätverk (AP) som heter "configure-<mac>" där du kan ansluta och ställa in allt.
+
+Mjukvaran har också ArduinoOTA installerat så det går bra att uppdatera mjukvaran via IP. För att kunna debugga är även TelnetStream med som gör att du kan telnet in till IP så ser du debug konsol.
+
+Huvudelen består av en state-machine som i tur och ordning ansluter till internet (wifi), mqtt-server, skickar allt data, ansluter sedan till topas (wifi), hämtar data, paus, börja om, osv..
+
+## Mqtt
+Alla register som läses ut skickas till Mqtt-servern. Även översatta funktioner som t.ex. vattennivå.
 
 ```
-# Register:
+## Register
 
 Register 1 verksnummer
 
